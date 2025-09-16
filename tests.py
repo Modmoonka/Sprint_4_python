@@ -113,11 +113,10 @@ class TestBooksCollector:
 
         collector = BooksCollector()
 
-        collector.add_new_book('Ужасы')
-        collector.set_book_genre('Ужасы')
-        collector.get_book_genre('Ужасы')
+        collector.add_new_book('Мастер')
+        collector.set_book_genre('Мастер', 'Ужасы')
 
-        assert collector.get_book_genre() == ''
+        assert collector.get_book_genre('Мастер') == 'Ужасы'
    
     # 11 Проверка метода get_books_with_specific_genre
     def test_get_books_with_specific_genre_returns_correct_genre(self):
@@ -128,6 +127,7 @@ class TestBooksCollector:
         collector.set_book_genre('Властелин колец', 'Фантастика')
         collector.add_new_book('Ворон')
         collector.set_book_genre('Ворон', 'Ужасы')
-        books = collector.get_books_with_specific_genre("Фантастика")
+        books = collector.get_books_with_specific_genre('Фантастика')
         assert 'Властелин колец' in books
         assert 'Ворон' not in books
+
